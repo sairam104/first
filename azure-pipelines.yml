@@ -1,0 +1,25 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
+
+- script: |
+    echo Add other tasks to build, test, and deploy your project.
+    echo See https://aka.ms/yaml
+  displayName: 'Run a multi-line script'
+- task: AzureVmssDeployment@0
+  inputs:
+    azureSubscription: 'Free Trial(5c8f7a23-63f7-4940-b284-eff323b2497d)'
+    action: 'Update image'
+    vmssName: 'sai'
+    vmssOsType: 'Linux'
